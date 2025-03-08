@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Espoti fai</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-3">
+    <h2>Login Espoti Fai</h2>
+    <form id="loginForm" action="login-servlet" method="POST">
+        <div class="mb-3 mt-3">
+            <label for="usuario">Email:</label>
+            <input type="text" class="form-control" id="usuario" placeholder="Informe o Email" name="usuario">
+        </div>
+        <div class="mb-3">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" id="senha" placeholder="Informe sua senha" name="senha">
+        </div>
+        <button type="submit" class="btn btn-primary">Acessar</button>
+        <div id="error-message" class="text-danger mt-2" style="display:none;"></div>
+    </form>
+</div>
+
+<script>
+    function validarEmailESenha(email, senha)
+    {
+        const regexEmail = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$/; //regex para validação do email
+        if(!regexEmail.test(email)) //se caso o email for invalido
+        {
+            return false;
+        }
+        const parteUsuario = email.split('@')[0];  //pegando a parte do e-mail antes do @
+        return parteUsuario === senha; //verificando se a senha bate com começo do email
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(event)
+    {
+        event.preventDefault();
+
+        const email = document.getElementById('usuario').value;
+        const senha = document.getElementById('senha').value;
+
+        if(validarEmailESenha(email, senha))
+        {
+            window.location.href = "play-song.jsp"; //redireciona para a página
+        }
+        else
+        {
+            // Exibe a mensagem de erro se a validação falhar
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = 'Email ou senha inválidos.';
+            errorMessage.style.display = 'block';
+        }
+    });
+</script>
+
+</body>
+</html>
