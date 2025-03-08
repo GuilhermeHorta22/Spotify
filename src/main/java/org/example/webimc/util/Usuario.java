@@ -5,7 +5,8 @@ public class Usuario {
     private String nivel;
     private String acesso;
 
-    public Usuario(String nome, String nivel, String acesso) {
+    public Usuario(String nome, String nivel, String acesso)
+    {
         this.nome = nome;
         this.nivel = nivel;
         this.acesso = acesso;

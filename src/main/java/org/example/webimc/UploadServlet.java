@@ -22,26 +22,26 @@ import java.io.InputStream;
 )
 public class UploadServlet extends HttpServlet
 {
-    private static final String UPLOAD_DIRECTORY = "uploads";
+    private static final String UPLOAD_DIRECTORY = "uploads"; // Diretório fixo para salvar os arquivos
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String nomeArquivo = request.getParameter("nomeArquivo"); //nome do arquivo que o usuario passou
-        Part filePart = request.getPart("file"); //pegando parte do arquivo
-        if(filePart == null) //verificando se ele realmente passou um arquivo
+        String nomeArquivo = request.getParameter("nomeArquivo"); // nome do arquivo que o usuário passou
+        Part filePart = request.getPart("file"); // pegando parte do arquivo
+        if(filePart == null) // verificando se ele realmente passou um arquivo
         {
             response.getWriter().println("Erro: Nenhum arquivo foi enviado.");
             return;
         }
 
-        String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;//onde vai salvar o arquivo
+        String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY; // onde vai salvar o arquivo
         File uploadDir = new File(uploadPath);
-        if(!uploadDir.exists()) //verificando se já existe a pasta
+        if(!uploadDir.exists()) // verificando se já existe a pasta
         {
             uploadDir.mkdir();
         }
 
-        //salvando musica
+        // salvando o arquivo
         File file = new File(uploadDir, nomeArquivo);
         try(InputStream input = filePart.getInputStream(); FileOutputStream output = new FileOutputStream(file))
         {
@@ -55,7 +55,7 @@ public class UploadServlet extends HttpServlet
         }
         catch(Exception e)
         {
-            response.getWriter().println("Erro!!! Não foi possivel salvar o arquivo: " + nomeArquivo);
+            response.getWriter().println("Erro!!! Não foi possível salvar o arquivo: " + nomeArquivo);
         }
     }
 }

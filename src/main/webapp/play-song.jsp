@@ -49,9 +49,6 @@
         Arquivo:
         <input type="file" name="file" id="file" required /><br/>
 
-        Destino:
-        <input type="text" value="tmp" name="destination" /><br/>
-
         <input type="hidden" id="nomeArquivo" name="nomeArquivo"/>
 
         <input type="submit" value="Upload" name="upload" id="upload" />
