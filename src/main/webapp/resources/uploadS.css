@@ -1,0 +1,77 @@
+body {
+    background: linear-gradient(135deg, #5b5f61, #8eb691); /* Gradiente de verde claro para verde escuro */
+    font-family: 'Arial', sans-serif; /* Fonte padrão */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white; /* Fundo branco para o formulário */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+h2 {
+    color: #333;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.title1 h2 {
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+}
+.title1 h2:before {
+    width: 28px;
+    height: 5px;
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    margin-left: -14px;
+    background-color: #1c9300;
+}
+.title1 h2:after {
+    width: 100px;
+    height: 1px;
+    display: block;
+    content: "";
+    position: relative;
+    margin-top: 25px;
+    left: 50%;
+    margin-left: -50px;
+    background-color: #1c9300;
+}
+
+.form-label {
+    color: #555;
+    font-size: 1rem;
+}
+
+.form-control, .form-select {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.alert {
+    margin-top: 20px;
+}

@@ -1,0 +1,60 @@
+
+body {
+    background: linear-gradient(135deg, #5b5f61, #8eb691); /* Gradiente de verde claro para verde escuro */
+    font-family: 'Arial', sans-serif; /* Fonte padrão */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.card {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 8px;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.input-group-text {
+    background-color: #229e1d;
+    color: white;
+}
+
+input.form-control {
+    border-radius: 5px;
+}
+
+button.btn-primary {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #229e1d;
+    border: none;
+    font-size: 1.2rem;
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+#error-message {
+    font-size: 0.9rem;
+    margin-top: 10px;
+    color: #e74c3c;
+    text-align: center;
+}
+
+

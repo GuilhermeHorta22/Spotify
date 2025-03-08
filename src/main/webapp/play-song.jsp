@@ -5,6 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Web Upload</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/uploadS.css" rel="stylesheet"> <!-- Referência ao seu arquivo CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function validarArquivo()
         {
@@ -25,46 +28,57 @@
 </head>
 <body>
 
-<div> <!--parte que eu fiz separado para para usar como menu-->
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <li>
-                <a href="busca.jsp" class="block py-2 px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 dark:text-white md:dark:text-gray-500" aria-current="page">Buscar Músicas</a>
+<div class="container mt-5">
+    <div class="mb-4">
+        <ul class="nav justify-content-start">
+            <li class="nav-item">
+                <a class="nav-link active" href="busca.jsp">Buscar Músicas</a>
             </li>
-
-            <li>
-                <a href="logoff-servlet" class="block py-2 px-3 text-white bg-red-500 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 dark:text-white md:dark:text-gray-500">
-                    Sair da Sessão
-                </a>
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="logoff-servlet">Sair da Sessão</a>
             </li>
         </ul>
     </div>
+
+    <div class="title1">
+        <h2 class="mb-4">Upload de Música</h2>
+    </div>
+
     <form method="POST" action="upload-servlet" enctype="multipart/form-data" onsubmit="return validarArquivo()">
-        <label for="nome">Nome da Música:</label>
-        <input type="text" name="nome" id="nome" required /><br/>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome da Música:</label>
+            <input type="text" name="nome" id="nome" class="form-control" required />
+        </div>
 
-        <label for="estilo">Estilo:</label>
-        <select name="estilo" id="estilo" required>
-            <option value="sertanejo">Sertanejo</option>
-            <option value="rock">Rock</option>
-            <option value="hip_hop">Hip Hop</option>
-            <option value="eletronica">Eletrônica</option>
-            <option value="samba">Samba</option>
-            <option value="forro">Forró</option>
-            <option value="mpb">MPB</option>
-            <option value="reggae">Reggae</option>
-            <option value="pop_internacional">Pop Internacional</option>
-        </select><br/>
+        <div class="mb-3">
+            <label for="estilo" class="form-label">Estilo:</label>
+            <select name="estilo" id="estilo" class="form-select" required>
+                <option value="sertanejo">Sertanejo</option>
+                <option value="rock">Rock</option>
+                <option value="hip_hop">Hip Hop</option>
+                <option value="eletronica">Eletrônica</option>
+                <option value="samba">Samba</option>
+                <option value="forro">Forró</option>
+                <option value="mpb">MPB</option>
+                <option value="reggae">Reggae</option>
+                <option value="pop_internacional">Pop Internacional</option>
+                <option value="pagode">Pagode</option>
+            </select>
+        </div>
 
-        <label for="artista">Artista:</label>
-        <input type="text" name="artista" id="artista" required /><br/>
+        <div class="mb-3">
+            <label for="artista" class="form-label">Artista:</label>
+            <input type="text" name="artista" id="artista" class="form-control" required />
+        </div>
 
-        Arquivo:
-        <input type="file" name="file" id="file" required /><br/>
+        <div class="mb-3">
+            <label for="file" class="form-label">Arquivo de Música:</label>
+            <input type="file" name="file" id="file" class="form-control" required />
+        </div>
 
         <input type="hidden" id="nomeArquivo" name="nomeArquivo"/>
 
-        <input type="submit" value="Upload" name="upload" id="upload" />
+        <button type="submit" class="btn btn-primary">Upload</button>
     </form>
 </div>
 
