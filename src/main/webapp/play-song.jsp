@@ -25,7 +25,20 @@
 </head>
 <body>
 
-<div>
+<div> <!--parte que eu fiz separado para para usar como menu-->
+    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+                <a href="busca.jsp" class="block py-2 px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 dark:text-white md:dark:text-gray-500" aria-current="page">Buscar Músicas</a>
+            </li>
+
+            <li>
+                <a href="logoff-servlet" class="block py-2 px-3 text-white bg-red-500 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 dark:text-white md:dark:text-gray-500">
+                    Sair da Sessão
+                </a>
+            </li>
+        </ul>
+    </div>
     <form method="POST" action="upload-servlet" enctype="multipart/form-data" onsubmit="return validarArquivo()">
         <label for="nome">Nome da Música:</label>
         <input type="text" name="nome" id="nome" required /><br/>
