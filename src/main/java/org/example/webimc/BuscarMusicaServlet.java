@@ -1,4 +1,4 @@
-package org.example.webimc.util;
+package org.example.webimc;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
