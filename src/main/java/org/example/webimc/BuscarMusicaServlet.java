@@ -22,35 +22,38 @@ public class BuscarMusicaServlet extends HttpServlet
         String nome = request.getParameter("nome");
         if(nome == null || nome.isEmpty())
         {
-            response.getWriter().println("Erro: Nenhuma palavra-chave foi fornecida.");
+            request.setAttribute("erro", "Erro: Nenhuma palavra-chave foi fornecida.");
+            request.getRequestDispatcher("busca.jsp").forward(request, response);
             return;
         }
 
         String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
         File pasta = new File(uploadPath);
 
-        if(!pasta.exists() || !pasta.isDirectory())//valindo se o diretorio existe
+        if(!pasta.exists() || !pasta.isDirectory())
         {
-            response.getWriter().println("Erro: Diretório 'uploads' não encontrado!");
+            request.setAttribute("erro", "Erro: Diretório 'uploads' não encontrado!");
+            request.getRequestDispatcher("busca.jsp").forward(request, response);
             return;
         }
 
         List<String> musicasEncontradas = new ArrayList<>();
         for(File f : pasta.listFiles())
         {
-            if(f.isFile())
+            if(f.isFile() && f.getName().contains(nome))
             {
-                if(f.getName().contains(nome))//validando se o nome do arquivo contém a palavra-chave
-                {
-                    musicasEncontradas.add(f.getName());
-                }
+                musicasEncontradas.add(f.getName());
             }
         }
 
-        //retornando a lista de musica encontrada
-        request.setAttribute("musicasEncontradas", musicasEncontradas.toArray(new String[0]));
+        if(musicasEncontradas.isEmpty())
+        {
+            request.setAttribute("erro", "Nenhuma música encontrada com esse nome.");
+        }
+        else
+        {
+            request.setAttribute("musicasEncontradas", musicasEncontradas.toArray(new String[0]));
+        }
         request.getRequestDispatcher("busca.jsp").forward(request, response);
     }
 }
-
-

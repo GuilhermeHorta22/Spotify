@@ -4,8 +4,8 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Buscar Música</title>
-    <link href="resources/uploadS.css" rel="stylesheet"> <!-- Referência ao seu arquivo CSS -->
+    <title>Play My Song - Buscar Música</title>
+    <link href="resources/uploadS.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -35,11 +35,22 @@
 
     <div id="resultado" class="mt-6 w-full max-w-lg">
         <%
-            String[] musicas = (String[]) request.getAttribute("musicasEncontradas");
-            if(musicas != null) {
-                for(String musica : musicas) {
+            String erro = (String) request.getAttribute("erro");
+            if(erro != null)
+            {
         %>
+        <div class="bg-red-200 text-red-800 p-3 rounded-lg shadow-md">
+            <p class="font-semibold"><%= erro %></p>
+        </div>
+        <% } %>
 
+        <%
+            String[] musicas = (String[]) request.getAttribute("musicasEncontradas");
+            if(musicas != null && musicas.length > 0)
+            {
+                for(String musica : musicas)
+                {
+        %>
         <div class="bg-white p-4 rounded-lg shadow-lg mt-4">
             <p class="text-lg font-semibold"><%= musica %></p>
             <audio controls class="w-full mt-2">

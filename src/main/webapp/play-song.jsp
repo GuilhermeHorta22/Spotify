@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Web Upload</title>
+    <title>Play My Song - Upload</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/uploadS.css" rel="stylesheet"> <!-- Referência ao seu arquivo CSS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -15,7 +15,7 @@
             var estilo = document.getElementById('estilo').value;
             var artista = document.getElementById('artista').value;
             const regex = /^[a-zA-Z0-9 _]+$/; //regex para validação do nome
-            if (!regex.test(nomeMusica) || !regex.test(estilo) || !regex.test(artista))
+            if(!regex.test(nomeMusica) || !regex.test(estilo) || !regex.test(artista))
             {
                 alert("Os campos nome da música, estilo e artista podem conter apenas letras, números, espaços e underline.");
                 return false;
@@ -43,6 +43,24 @@
     <div class="title1">
         <h2 class="mb-4">Upload de Música</h2>
     </div>
+
+    <%
+        String erro = (String) request.getAttribute("erro");
+        String mensagem = (String) request.getAttribute("mensagem");
+        if(erro != null)
+        {
+    %>
+    <div class="alert alert-danger text-center">
+        <p class="font-semibold"><%= erro %></p>
+    </div>
+    <% }
+        else
+            if(mensagem != null)
+            { %>
+    <div class="alert alert-success text-center">
+        <p class="font-semibold"><%= mensagem %></p>
+    </div>
+    <% } %>
 
     <form method="POST" action="upload-servlet" enctype="multipart/form-data" onsubmit="return validarArquivo()">
         <div class="mb-3">
@@ -81,6 +99,5 @@
         <button type="submit" class="btn btn-primary">Upload</button>
     </form>
 </div>
-
 </body>
 </html>
