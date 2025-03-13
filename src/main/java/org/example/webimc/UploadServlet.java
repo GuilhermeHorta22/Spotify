@@ -13,17 +13,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-@WebServlet(name = "UploadServlet", value = "/upload-servlet")
+
 @MultipartConfig(
         location="/",
         fileSizeThreshold=1024*1024,    // 1MB *
         maxFileSize=1024*1024*100,      // 100MB **
         maxRequestSize=1024*1024*10*10  // 100MB ***
 )
+
+@WebServlet(name = "UploadServlet", value = "/upload-servlet")
 public class UploadServlet extends HttpServlet
 {
     private static final String UPLOAD_DIRECTORY = "uploads"; //diretorio fixo para salvar os arquivos
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String nomeArquivo = request.getParameter("nomeArquivo");

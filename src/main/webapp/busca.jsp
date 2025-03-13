@@ -10,6 +10,14 @@
 </head>
 <body>
 
+<% //se caso tentar abrir em outro navegador sem ter o login volta para o index
+    HttpSession sessao = request.getSession(false);
+    if(sessao == null || sessao.getAttribute("usuario") == null)
+    {
+        response.sendRedirect("index.html");
+    }
+%>
+
 <div class="container mt-5">
 
     <div class="mb-4">

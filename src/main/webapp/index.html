@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
 <div class="container">
@@ -42,35 +43,24 @@
 </div>
 
 <script>
-    function validarEmailESenha(email, senha)
+    //pegando os parametros da url
+    function getParametroUrl(nome)
     {
-        const regexEmail = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$/;
-        if(!regexEmail.test(email))
-        {
-            return false;
-        }
-        const parteUsuario = email.split('@')[0];
-        return parteUsuario === senha;
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(nome);
     }
 
-    document.getElementById('loginForm').addEventListener('submit', function(event)
+    //só exibe a mensagem de erro se o parametro existir
+    window.onload = function ()
     {
-        event.preventDefault();
-
-        const email = document.getElementById('usuario').value;
-        const senha = document.getElementById('senha').value;
-
-        if(validarEmailESenha(email, senha))
-        {
-            window.location.href = "play-song.jsp";
-        }
-        else
+        const erro = getParametroUrl("erro");
+        if(erro)
         {
             const errorMessage = document.getElementById('error-message');
             errorMessage.textContent = 'Email ou senha inválidos.';
             errorMessage.style.display = 'block';
         }
-    });
+    };
 </script>
 
 </body>
