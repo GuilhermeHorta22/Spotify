@@ -32,7 +32,7 @@
     </div>
 
     <div class="title1">
-        <h2 class="mb-4">Subir musicas</h2>
+        <h2 class="mb-4">Buscar música</h2>
     </div>
 
     <form action="busca" method="get" class="bg-white p-4 rounded-lg shadow-lg flex flex-col items-center w-full max-w-md">
